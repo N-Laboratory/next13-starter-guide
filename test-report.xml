@@ -1,0 +1,10 @@
+<testExecutions version="1">
+  <file path="src\unit-test\clientComponents\page.test.tsx">
+    <testCase name="unit testing clientComponents/page.tsx - initial display check - should display the initial number" duration="11" />
+    <testCase name="unit testing clientComponents/page.tsx - test useState function - should display the number of clicks" duration="3" />
+  </file>
+  <file path="src\unit-test\serverComponents\page.test.tsx">
+    <testCase name="unit testing serverComponents/page.tsx - should display the post list" duration="12" />
+    <testCase name="unit testing serverComponents/page.tsx - should call notFound function" duration="1" />
+  </file>
+</testExecutions>

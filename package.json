@@ -1,0 +1,46 @@
+{
+  "name": "next13-starter-guide",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier \"./src/**/*.{js,jsx,ts,tsx,json,css}\" --write",
+    "test": "vitest --coverage --dir src/unit-test",
+    "test:e2e": "vitest --coverage --dir src/e2e-test",
+    "sonar": "sonar-scanner"
+  },
+  "dependencies": {
+    "@types/node": "20.5.9",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "axios": "^1.5.0",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "next": "13.4.19",
+    "postcss": "8.4.29",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swr": "^2.2.2",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "@vitejs/plugin-react": "^4.0.4",
+    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/coverage-v8": "^0.34.4",
+    "eslint-config-prettier": "^9.0.0",
+    "happy-dom": "^11.0.6",
+    "prettier": "^3.0.3",
+    "puppeteer": "^21.2.1",
+    "sonarqube-scanner": "^3.1.0",
+    "vitest": "^0.34.4",
+    "vitest-sonar-reporter": "^0.4.1"
+  }
+}
