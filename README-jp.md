@@ -18,13 +18,9 @@
     <img src="https://img.shields.io/badge/-FollowMyAccount-grey.svg?logo=github&style=flat">
   </a>
 </p>
+このプロジェクトはNext 13の学習用のテンプレートプロジェクトとして作成しました。バージョンはNext 13.4を使用しています。
 
-[日本語版 README はこちら](https://github.com/N-Laboratory/next13-starter-guide/blob/main/README-jp.md)
-
-This project is a template Next 13 project. It use Next 13.4 version.
-
-The minimum required functions are implemented as a template project and the essentials are explained.
-This project also implement unit testing, End-to-End testing, and analyzing source code by SonarQube.
+Next 13のテンプレートプロジェクトとして最低限必要な機能を実装し、要点を解説しています。 ユニットテスト、E2Eテスト、SonarQubeも取り扱っています。
 
 ## Contents
 
@@ -44,13 +40,12 @@ This project also implement unit testing, End-to-End testing, and analyzing sour
 1. [Analyzing source code by SonarQube](#analyzing-source-code-by-sonarqube)
 
 ## Create [New Project](https://nextjs.org/docs/getting-started/installation)
-Run below command to create a new next 13 project.
-
+Next 13のプロジェクトを新規作成するには以下のコマンドを実行します。
 ```bash
 npx <project-name>@latest
 ```
 
-On installation, you'll see the following prompts:
+インストール時に以下のように各ツールをインストールするか選択できます:
 
 ```bash
 Need to install the following packages:
@@ -64,20 +59,20 @@ Ok to proceed? (y) y
 √ Would you like to use App Router? (recommended) ... No / Yes
 √ Would you like to customize the default import alias? ... No / Yes
 ```
-
-After the prompts, create-next-app will create a folder with your project name and install the required dependencies.
+インストール後はプロジェクト名のディレクトリが作成されます。
 
 ### Usage
+以下のコマンドでアプリケーションを起動します。
 ```bash
 npm run dev
 ```
-
-You can access http://localhost:3000 to use this application.
+起動後は以下のURLでアクセスできます。
+http://localhost:3000
 
 ### Change [source directory](https://nextjs.org/docs/app/building-your-application/configuring/src-directory)
-To use the src directory, move the app Router folder or pages Router folder to src/app or src/pages respectively.
-If you're using Tailwind CSS, you'll need to add the /src prefix to the tailwind.config.ts file in the content section like below.
 
+srcディレクトリを使用するには、App Routerフォルダをsrc/appに、Pages Routerフォルダをsrc/pagesに移動します。
+Tailwind CSSを使用している場合は、以下のようにtailwind.config.tsのcontentセクションに/srcプレフィックスを追加する必要があります。
 ```ts
 // tailwind.config.ts
 const config: Config = {
@@ -87,8 +82,7 @@ export default config
 ```
 
 ### Enable [app router](https://nextjs.org/docs/app)
-If you enable app router, add the following to next.config.js.
-
+App routerを有効にする場合は、next.config.jsに以下を追加します。
 ```js
 // next.config.js
 /** @type {import('next').NextConfig} */
@@ -101,22 +95,18 @@ const nextConfig = {
 
 module.exports = nextConfig
 ```
-
-※If you are using Next 13.4 or later, there is no need to add it.
+※Next 13.4以降をお使いの場合は追加する必要はありません。
 
 ## [Prettier](https://prettier.io/) Setup
-Run below command to install prettier.
-
+以下のコマンドでPrettierをインストールします。
 ```bash
 npm install --save-dev prettier eslint-config-prettier
 ```
 
-※Use eslint-config-prettier to make Prettier and ESLint play nice together.
-
+※eslint-config-prettierを使用することでESLintとの干渉を回避することができます。
 ### Create [configuration file](https://prettier.io/docs/en/configuration)
-Create a .prettierrc file in the root of your project.
-Prettier uses cosmiconfig for configuration file support. This means you can configure Prettier via .prettierrc.
-
+プロジェクトのルートに.prettierrcファイルを作成します。
+Prettierは設定ファイルのサポートにcosmiconfigを使用しているので、.prettierrcを使ってPrettierを設定することができます。
 ```json
 {
   "trailingComma": "all",
@@ -129,8 +119,7 @@ Prettier uses cosmiconfig for configuration file support. This means you can con
 ```
 
 ### Ignoring Code
-To exclude files from formatting, create a .prettierignore file in the root of your project.
-
+ファイルをフォーマットから除外するには、プロジェクトのルートに.prettierignoreファイルを作成します。
 ```bash
 # Ignore artifacts:
 build
@@ -141,8 +130,7 @@ coverage
 ```
 
 ### Edit eslint configuration file
-Add prettier to .eslintrc.json in the extends section.
-
+.eslintrc.jsonのextendsセクションにprettierを追加します。
 ```json
 {
   "extends": ["next/core-web-vitals", "prettier"]
@@ -150,10 +138,7 @@ Add prettier to .eslintrc.json in the extends section.
 ```
 
 ### Edit package.json
-Add the following to package.json in the scripts section.
-You can use the prettier command to run Prettier from the command line.
-For details https://prettier.io/docs/en/cli
-
+package.jsonのscriptsセクションに以下を追加します。
 ```json
 {
   "scripts": {
@@ -163,9 +148,11 @@ For details https://prettier.io/docs/en/cli
   }
 }
 ```
+prettierコマンドを使って、コマンドラインからPrettierを実行することができます。
+詳細は[こちら](https://prettier.io/docs/en/cli)
 
 ## [ESLint](https://typescript-eslint.io/) Setup
-ESLint do not show Typescript errors by default like below.
+create-next-appでNext 13のプロジェクトを新規作成した場合は、初期状態ではESLintはTypescriptのエラーを表示しません。
 ```ts
 // foo.ts
 const foo = '123'
@@ -179,14 +166,13 @@ $ npm run lint
 
 
 ### Install [plugins](https://main--typescript-eslint.netlify.app/getting-started)
-Install plugins to run ESLint with recommended rules on your TypeScript code.
+プラグインをインストールすることで、TypeScriptコードに対して推奨されるルールでESLintを実行することができます。
 ```bash
 npm install --save-dev  @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
 ### Edit eslint configuration file
-Add the follwing to .eslintrc.json.
-
+.eslintrc.jsonに以下を追加します。
 ```json
 {
   "extends": [
@@ -204,7 +190,7 @@ Add the follwing to .eslintrc.json.
 ```
 
 ## Default Layout
-A layout is UI that is shared between multiple pages. On navigation, layouts preserve state, remain interactive, and do not re-render.You can define a layout by default exporting a React component from a layout.tsx file in app directory like below.
+レイアウトは、複数のページで共有されるUIです。ナビゲーションの際、レイアウトは状態を保持し、インタラクティブであり続け、再レンダリングしません。デフォルトでは、以下のようにappディレクトリのlayout.tsxファイルからReactコンポーネントをエクスポートすることでレイアウトを定義することができます。
 ```tsx
 // app/layout.tsx
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -217,16 +203,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```
 
 ## [Metadata API](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
-Metadata API (Next 13.2 or later) allows you to define metadata (e.g. meta and link tags inside your HTML head element) for improved SEO and web shareability.It only supported in Server Components.
+メタデータAPI（Next 13.2以降）を使用すると、SEOを向上させるために、HTMLのhead要素内にメタデータ（metaタグやリンクタグなど）を定義できます。
 
 ### Static Metadata
-To define static metadata, export a Metadata object from a layout.tsx or page.tsx file.
+静的メタデータを定義するには、layout.tsxまたはpage.tsxファイルからメタデータオブジェクトをエクスポートします。
 ```tsx
 // layout.tsx / page.tsx
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  // For more supported options
+  // 詳細は以下を参照ください
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
   title: 'some title',
   description: 'some description',
@@ -236,7 +222,7 @@ export default function Page() {}
 ```
 
 ### Dynamic Metadata
-You can use generateMetadata function to fetch metadata that requires dynamic values (e.g. current route parameters, external data).
+generateMetadata関数を使用すると、動的な値 (現在のルート パラメータや外部データなど) を必要とするメタデータを取得できます。
 ```tsx
 // page.tsx
 import { Metadata } from 'next'
@@ -249,13 +235,13 @@ type Props = {
 export async function generateMetadata(
   { params, searchParams }: Props,
 ): Promise<Metadata> {
-  // If file path is app/products/[id]/page.tsx, you can get id from params.id
+  // ファイルパスが app/products/[id]/page.tsx の場合に、idをparams.idから取得することができます
   const id = params.id
 
-  // get search param
+  // 検索パラメータを取得できます
   const keyword = searchParams.get('keyword')
 
-  // fetch data
+  // データフェッチ
   const item = await fetch(`https://.../${id}`).then((res) => res.json())
 
   return {
@@ -267,10 +253,10 @@ export default function Page({ params, searchParams }: Props) {}
 ```
 
 ## [Error Handling](https://nextjs.org/docs/app/api-reference/file-conventions/error)
-You can catch unexpected errors using error.tsx like below.
+以下のように、error.tsxを使って予期しないエラーをキャッチすることができます。
 ```tsx
 // app/foo/error.tsx
-'use client' // Error components must be Client Components
+'use client' // Client Componentsを指定する必要があります
 
 import { useEffect } from 'react'
 
@@ -285,7 +271,7 @@ export default function Error({error, reset}: {
   return (
     <div>
       <h2>Something went wrong!</h2>
-      <!-- Attempt to recover by trying to re-render the segment -->
+      <!-- 再レンダリング -->
       <button onClick={() => reset()}>Try again</button>
     </div>
   )
@@ -308,7 +294,7 @@ export default async function ErrorHandling() {
 }
 ```
 ## [Loading Page](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
-To show loading indicator before page rendering, use app/loading.tsx.
+各ページの描画前にローディング画面を表示するには、app/loading.tsxを使用します。
 ```tsx
 // app/loading.tsx.
 export default function Loading() {
@@ -334,7 +320,7 @@ export default function Loading() {
 ```
 
 ## [Not Found Page](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
-The notFound function allows you to render the not-found file within a route segment as well as inject a tag.
+notFound関数を使うと、not-found.tsxを描画することができます。
 ```tsx
 // app/not-found.tsx
 import Link from 'next/link'
@@ -355,7 +341,7 @@ import { notFound } from 'next/navigation'
 export default async function NotFound() {
   const item = await fetch('https://jsonplaceholder.typicode.com/posts/999').then((res) => res.json())
   if (!item || Object.keys(item).length === 0) {
-    // go to app/not-found.tsx
+    // not-found.tsxを描画
     notFound()
   }
 
@@ -368,15 +354,15 @@ export default async function NotFound() {
 ```
 
 ## [Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components)
-React Server Components allow you to write UI that can be rendered and optionally cached on the server.With Server Components, we're laying the foundations to build complex interfaces while reducing the amount of JavaScript sent to the client, enabling faster initial page loads.
+Server Componentsを使用すると、サーバーでレンダリングされ、オプションでサーバーにキャッシュされるUIを記述できます。Server Componentsを使用すると、クライアントに送信されるJavaScriptの量を減らしながら、初回のページの読み込みを高速化できます。
 
-Server Components features:
-1. Rendering on the server (Javascript is not sent to the client)
-1. Fetch data (async/await is available)
-1. Access backend resources (directly)
-1. Keep sensitive information on the server (access tokens, API keys, etc)
-1. Keep large dependencies on the server / Reduce client-side JavaScript
-1. Browser-only APIs, Event listeners (onClick(), onChange(), etc), Lifecycle Effects (useState(), useReducer(), useEffect(), etc) is not available
+Server Componentsの特徴:
+1. サーバーでのレンダリング（Javascriptはクライアントに送信されません）
+1. データの取得（async/awaitの使用が可能）
+1. バックエンドリソースへの直接アクセス可能
+1. サーバーに機密情報を保持（アクセストークン、APIキーなど）
+1. クライアントサイドのJavaScriptを減少
+1. ブラウザのみのAPI、イベントリスナー(onClick()、onChange()など)、ライフサイクルエフェクト(useState()、useReducer()、useEffect()など)は使用できません。
 ```tsx
 // app/serverComponents/page.tsx.
 import { notFound } from 'next/navigation'
@@ -410,16 +396,16 @@ export default async function ServerComponents() {
 ```
 
 ## [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
-Client Components allows you to write interactive UI that can be rendered on the client at request time. To use Client Components, you can add the React "use client" directive at the top of a file, above your imports.
+Client Componentsを使用すると、リクエスト時にクライアントでレンダリングされるインタラクティブなUIを記述できます。Client Componentsを使用するには、"use client "ディレクティブをファイルの一番上（import文の上）に追加します。
 
-Client Components features:
-1. Rendering on the client (Javascript is executed in the browser)
-1. Fetch data (use useState・useEffect・SWR・React-query insted of async/await)
-1. Add interactivity and event listeners (onClick(), onChange(), etc)
-1. Use State and Lifecycle Effects (useState(), useReducer(), useEffect(), etc)
-1. Use browser-only APIs
-1. Use custom hooks that depend on state, effects, or browser-only APIs
-1. Use React Class components
+Client Componentsの特徴:
+1. クライアントサイドでのレンダリング（Javascriptはブラウザで実行）
+1. データのフェッチ（async/awaitの代わりにuseState・useEffect・SWR・React-queryを使う）
+1. イベントリスナーの追加（onClick()、onChange()など）
+1. Stateとライフサイクルエフェクトの使用 (useState(), useReducer(), useEffect() など)
+1. ブラウザ専用のAPIの使用
+1. State、エフェクト、またはブラウザ専用APIに依存するカスタムフックの使用
+1. Reactクラスのコンポーネントの使用
 ```tsx
 // app/clientComponents/page.tsx.
 'use client'
@@ -446,7 +432,7 @@ export default function Counter() {
 }
 ```
 ### Client-side data fetching with SWR
-Next.js has created a React hook library for data fetching called SWR. It is highly recommended if you are fetching data on the client-side. It handles caching, revalidation, focus tracking, refetching on intervals, and more.
+Next.jsは、SWRというデータフェッチ用のReactフックライブラリを作成しています。クライアントサイドでデータを取得する場合は、このライブラリを使うことを強くお勧めします。キャッシュ、再検証、フォーカストラッキング、再フェッチなどを手軽に実装できます。
 ```tsx
 // app/swr/page.tsx.
 'use client'
@@ -499,14 +485,14 @@ export default function Swr() {
 
 
 ## [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
-If you need to fetch data in a client component, you can call a Route Handler from the client. Route Handlers execute on the server and return the data to the client. This is useful when you don't want to expose sensitive information to the client, such as API tokens. Route Handlers are only available inside the app directory. They are the equivalent of API Routes inside the pages directory meaning you do not need to use API Routes and Route Handlers together.
+Client Componentsでデータを取得する必要がある場合、クライアントからRoute Handlerを呼び出すことができます。Route Handlerはサーバー上で実行され、クライアントにデータを返します。これは、APIトークンのような機密情報をクライアントに公開したくない場合に便利です。Route Handlersはappディレクトリ内でのみ利用可能です。API RoutesとRoute Handlersを一緒に使う必要はありません。
 ```
 app
 ├── routeHandlers
-│     └── page.tsx ← execute on the client
+│     └── page.tsx ← クライアントで実行
 └── api
      └── routeHandlers
-          └── route.ts ← execute on the server
+          └── route.ts ← サーバーで実行
 ```
 ```tsx
 // app/routeHandlers/page.tsx
@@ -636,7 +622,7 @@ npm install --save-dev vitest @testing-library/react happy-dom @vitejs/plugin-re
 ```bash
 npm install --save-dev @vitest/coverage-v8
 ```
-Create vitest.config.ts in the root directory and add the following to vitest.config.ts.
+ルートディレクトリにvitest.config.tsを作成し、以下を追加します。
 ```ts
 // vitest.config.ts
 import react from '@vitejs/plugin-react'
@@ -667,7 +653,7 @@ export default defineConfig({
   },
 })
 ```
-Add the following to package.json in the scripts section.
+package.jsonのscriptsセクションに以下を追加します。
 ```json
 {
   "scripts": {
@@ -701,9 +687,9 @@ import { render, fireEvent } from '@testing-library/react'
 import { expect, test, describe } from 'vitest'
 import ClientComponents from '@/app/clientComponents/page'
 
-describe('unit testing clientComponents/page.tsx', () => {
-  describe('initial display check', () => {
-    test('should display the initial number', () => {
+describe('clientComponents/page.tsxのテスト', () => {
+  describe('画面の初期表示確認', () => {
+    test('クリック数が初期表示として「0」が表示されていること', () => {
       // Arrange
       const { getByText } = render(<ClientComponents />)
 
@@ -712,8 +698,8 @@ describe('unit testing clientComponents/page.tsx', () => {
     })
   })
 
-  describe('test useState function', () => {
-    test('should display the number of clicks', () => {
+  describe('useState関数のテスト', () => {
+    test('クリック数が画面に表示されていること', () => {
       // Arrange
       const { getByText } = render(<ClientComponents />)
 
@@ -771,7 +757,7 @@ const responseData = [
   },
 ]
 
-describe('unit testing serverComponents/page.tsx', () => {
+describe('serverComponents/page.tsxのテスト', () => {
   const response = {} as Response
   vi.mock('next/navigation', () => ({
     notFound: notFoundMock,
@@ -781,7 +767,7 @@ describe('unit testing serverComponents/page.tsx', () => {
     vi.restoreAllMocks()
   })
 
-  test('should display the post list', async () => {
+  test('投稿の一覧が画面に表示されていること', async () => {
     // Arrange
     response.json = vi.fn().mockResolvedValue(responseData)
     vi.spyOn(global, 'fetch').mockResolvedValue(response)
@@ -795,7 +781,7 @@ describe('unit testing serverComponents/page.tsx', () => {
     expect(notFoundMock).not.toBeCalled()
   })
 
-  test('should call notFound function', async () => {
+  test('投稿の一覧が取得できず、notFound関数がコールされること', async () => {
     // Arrange
     response.json = vi.fn().mockResolvedValue([])
     vi.spyOn(global, 'fetch').mockResolvedValue(response)
@@ -808,13 +794,13 @@ describe('unit testing serverComponents/page.tsx', () => {
 ```
 
 ## End to End Testing with [Puppeteer](https://github.com/puppeteer/puppeteer)
-End to end testing is a software testing technique that verifies the functionality and performance of an entire software application from start to finish by simulating user scenarios.
-Puppeteer is a NodeJS library that allows developers to programmatically control a web-browser.
+エンドツーエンドテストとは、ユーザーシナリオをシミュレートすることで、ソフトウェアアプリケーション全体の機能とパフォーマンスを最初から最後まで検証するソフトウェアテスト手法です。
+Puppeteerは、開発者がウェブブラウザをプログラムで制御できるようにするNodeJSライブラリです。
 ### Setup
 ```bash
 npm install --save-dev puppeteer
 ```
-Here is the page for the test. You can access it at [localhost:3000/clientComponents](localhost:3000/clientComponents)
+以下はテスト対象のページの実装です。処理の内容としてはSubmitボタンを押すと、押した回数が画面に表示されるだけのシンプルなページになります。次のURLでアクセスできます。 [localhost:3000/clientComponents](localhost:3000/clientComponents)
 ```tsx
 // clientComponents/page.tsx
 'use client'
@@ -832,14 +818,14 @@ export default function ClientComponents() {
   )
 }
 ```
-Here is a sample End to End testing code. It tests submit button state.
+以下のテストコードではSubmitボタンをクリックして、クリックした回数が画面に正しく表示されているかを検証しています。
 ```ts
 // e2e-test/e2e.test.ts
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 import { launch, PuppeteerLaunchOptions } from 'puppeteer'
 import type { Browser, Page } from 'puppeteer'
 
-// Set browser launch option. See the following for more details.
+// ブラウザの起動オプションを設定しています。設定できる項目の詳細は以下を参照ください
 // https://pptr.dev/api/puppeteer.browserlaunchargumentoptions
 const options: PuppeteerLaunchOptions = {
   headless: false,
@@ -865,7 +851,7 @@ describe('End to End Testing', () => {
     await browser.close()
   })
 
-  test('If you click the submit button, should display the number of clicks', async () => {
+  test('Submitボタンをクリックした場合、クリック数が画面に表示されていること', async () => {
     try {
       // Arrange
       await page.goto('http://localhost:3000/clientComponents')
@@ -897,7 +883,7 @@ describe('End to End Testing', () => {
   }, 60000)
 })
 ```
-Add the following to scripts section in package.json.
+package.jsonのscriptsセクションに以下を追加します。
 ```json
 {
   "scripts": {
@@ -905,24 +891,24 @@ Add the following to scripts section in package.json.
   },
 }
 ```
-Run below command to run test.
+以下のコマンドを実行してテストを実行します。
 ```bash
-# run application server
+# アプリの起動
 npm run dev
 
-# run End to End testing
+# E2Eの実行
 npm run test:e2e
 ```
 
 ## Analyzing source code by [SonarQube](https://docs.sonarsource.com/sonarqube/latest/)
-SonarQube is a self-managed, automatic code review tool that systematically helps you deliver clean code.
+SonarQubeはオープンソースの静的解析プラットフォームで、形式的なソースコードのバグや不適切な記法のチェック、カバレッジの計測などを行い、クリーンなコードの提供を体系的に支援します。
+### Setup
 ```bash
-# install SonarQube tools
 npm install --save-dev sonarqube-scanner vitest-sonar-reporter
 ```
-Add the following to vitest.config.ts.
-* add lcov to reporter section
-* add vitest-sonar-reporter to reporters section
+vitest.config.tsに以下を追加します。
+* lcovをreporterセクションに追加
+* vitest-sonar-reporterをreportersセクションに追加
 ```ts
 // vitest.config.ts
 import react from '@vitejs/plugin-react'
@@ -939,11 +925,11 @@ export default defineConfig({
       provider: 'v8',
       include: ['src/**/*.{tsx,js,ts}'],
       all: true,
-      // add lcov
+      // lcovを追加
       reporter: ['html', 'clover', 'text', 'lcov']
     },
     root: '.',
-    // add vitest-sonar-reporter
+    // vitest-sonar-reporterを追加
     reporters: ['verbose', 'vitest-sonar-reporter'],
     outputFile: 'test-report.xml'
   },
@@ -955,8 +941,8 @@ export default defineConfig({
   },
 })
 ```
-
-Create sonar-project.properties in the root directory and add the following to sonar-project.properties. See [this](https://docs.sonarqube.org/9.6/project-administration/narrowing-the-focus/) for more details.
+ルートディレクトリにsonar-project.propertiesを作成して以下を追加します。
+詳細は[こちら](https://docs.sonarqube.org/9.6/project-administration/narrowing-the-focus/)
 ```properties
 sonar.projectKey=next13-starter-guide
 sonar.projectName=next13-starter-guide
@@ -973,29 +959,28 @@ sonar.login=sqp_XXXXXXXXXXXXXXXXX
 ```
 
 ### Create SonarQube project
-Make sure you have installed SonarQube on your development machine.
-Run SonarQube server as localhost:9000 before do the following.
+前提として開発マシンにSonarQubeがインストールされていることを確認します。
+SonarQubeサーバをlocalhost:9000として起動し、以下を実行します。
 
-To create a SonarQube project, do the following.
-1. Access the following url.
+SonarQubeプロジェクトを作成するために以下を実施します。
+1. 次のURLにアクセスします。
 http://localhost:9000/projects
 
-1. Click [Create Project] and then click [Manually]
+1. Create Project > Manuallyを選択します。
 
-1. Input __next13-starter-guide__ in Project display name and Project key. Click [Set Up]
+1. Create a project画面でProject display nameとProject keyに __next13-starter-guide__ を設定してSet Upを押下します。
 
-1. Click [Locally]
+1. 「How do you want to analyze your repository?」と表示されるのでLocallyを押下します。
 
-1. Click [Generate] and then generate project token
+1. Provide a token欄のGenerate a project tokenを選択し、Generateを押下することでプロジェクトトークンが生成されます。
 
 ### Analyze your source code
-Add project token to sonar.login in sonar-project.properties.
-See [this](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/) for more details of token.
+sonar-project.propertiesのsonar.loginにプロジェクトトークンを追加します。
+詳細は[こちら](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/)。
 ```properties
 sonar.login=sqp_XXXXXXXXXXXXXXXXXXXXXX
 ```
-
-Add the following to scripts section in package.json.
+package.jsonのscriptsセクションに以下を追加します。
 ```json
 {
   "scripts": {
@@ -1003,16 +988,14 @@ Add the following to scripts section in package.json.
   },
 }
 ```
-
-Run below command to run SonarQube analysis.
+以下のコマンドを実行して、SonarQubeを実行します。
 ```bash
-# run all tests
+# テストの実行
 npm run test
 
-# run SonarQube analysis
+# SonarQubeの実行
 npm run sonar
 ```
-
-You can access the following url to show result.
+以下のURLにアクセスすると結果が表示されます。
 
 http://localhost:9000/dashboard?id=next13-starter-guide
