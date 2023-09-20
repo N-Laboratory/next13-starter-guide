@@ -47,7 +47,7 @@ This project also implement unit testing, End-to-End testing, and analyzing sour
 Run below command to create a new next 13 project.
 
 ```bash
-npx <project-name>@latest
+npx create-next-app@latest
 ```
 
 On installation, you'll see the following prompts:

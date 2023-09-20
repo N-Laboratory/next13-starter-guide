@@ -42,7 +42,7 @@ Next 13のテンプレートプロジェクトとして最低限必要な機能�
 ## Create [New Project](https://nextjs.org/docs/getting-started/installation)
 Next 13のプロジェクトを新規作成するには以下のコマンドを実行します。
 ```bash
-npx <project-name>@latest
+npx create-next-app@latest
 ```
 
 インストール時に以下のように各ツールをインストールするか選択できます:
