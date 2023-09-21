@@ -598,14 +598,9 @@ type TestResponse = {
   body: string
 }
 
-type RouteHandlerRequest = {
-  postId: string
-}
-
 export const POST = async (request: NextRequest) => {
   try {
-    const body = (await request.json()) as RouteHandlerRequest
-    const result = userSchema.safeParse(body)
+    const result = userSchema.safeParse(await request.json())
     if (!result.success) {
       return NextResponse.json({}, { status: 400 })
     }
